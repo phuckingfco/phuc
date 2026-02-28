@@ -225,7 +225,6 @@ with tab2:
                 
                 st.markdown("---")
                 st.success("Đã xử lý xong!")
-                st.balloons()
                 # --- PHẦN HIỂN THỊ KẾT QUẢ DÀI BẰNG KHUNG XANH ---
                 st.markdown(f"""
                     <div style="
@@ -291,3 +290,4 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+

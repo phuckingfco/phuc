@@ -10,36 +10,28 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* 1. Đổi màu khung Card chính sang xanh lá nhạt */
-    .main-card {
-        background-color: rgba(0, 255, 0, 0.05); /* Nền xanh cực nhạt */
-        padding: 25px;
-        border-radius: 15px;
-        border: 2px solid #00ff00; /* Viền xanh lá đậm */
-        box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2);
-        margin-bottom: 20px;
-    }
-
-    /* 2. Đổi màu tiêu đề H2 trong các Tab */
-    h2 {
-        color: #00ff00 !important;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    }
-
-    /* 3. Đổi màu các ô nhập liệu (Input) sang viền xanh */
+    /* 1. Đổi viền khung nhập liệu sang màu xanh lá */
     .stTextInput div[data-baseweb="input"] {
-        border: 1px solid #00ff00 !important;
-        background-color: rgba(0, 255, 0, 0.02) !important;
+        border: 2px solid #00ff00 !important;
+        border-radius: 10px !important;
+        background-color: rgba(0, 255, 0, 0.05) !important; /* Nền xanh nhạt */
+        transition: all 0.3s ease-in-out;
     }
 
-    /* 4. Đổi màu nút bấm (Button) sang xanh lá */
-    .stButton>button {
-        background-color: #00ff00 !important;
-        color: black !important;
-        font-weight: bold !important;
-        border-radius: 10px !important;
-        border: none !important;
-        transition: 0.3s;
+    /* 2. Hiệu ứng phát sáng khi nhấn vào ô nhập (Focus) */
+    .stTextInput div[data-baseweb="input"]:focus-within {
+        border: 2px solid #00ff00 !important;
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.6) !important;
+    }
+
+    /* 3. Đổi màu chữ gợi ý (Placeholder) cho dễ đọc */
+    .stTextInput input::placeholder {
+        color: rgba(0, 255, 0, 0.5) !important;
+    }
+
+    /* 4. Đổi màu chữ người dùng nhập vào */
+    .stTextInput input {
+        color: #00ff00 !important;
     }
     
     .stButton>button:hover {
@@ -424,6 +416,7 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+
 
 
 

@@ -152,7 +152,7 @@ with tab1:
                     ket_qua = bin(so).replace('0b', '')
                     st.markdown(f"""
                         <div style="background-color: #2b2b2b; padding: 15px; border-radius: 10px; border: 1px solid #555; width: calc(100% + 2px); margin-left: -1px;">
-                            <span style="color: #4CAF50; font-weight: bold;">🔢 Kết quả nhị phân:</span>
+                            <span style="color: #111111; font-weight: bold;">🔢 Kết quả nhị phân:</span>
                             <code style="color: white; font-size: 20px;">{ket_qua}</code>
                         </div>
                     """, unsafe_allow_html=True)
@@ -383,6 +383,7 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+
 
 
 

@@ -15,6 +15,16 @@ st.markdown(
         visibility: visible !important;
         background-color: rgba(0,0,0,0) !important;
     }
+    /* Khung nội dung tự động đổi màu theo giao diện */
+    .main-card {
+        background-color: rgba(128, 128, 128, 0.1); /* Màu nền nhẹ thích hợp cả 2 chế độ */
+        padding: 25px;
+        border-radius: 15px;
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        color: inherit; /* Tự động lấy màu chữ của hệ thống */
+    }
 
     /* 2. ẨN TRIỆT ĐỂ dòng "Fork me on GitHub" và nút Deploy */
     .viewerBadge_container__1QSob, 
@@ -373,6 +383,7 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+
 
 
 

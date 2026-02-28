@@ -16,7 +16,7 @@ st.markdown(
         font-weight: bold !important; /* Làm chữ đậm lên cho dễ nhìn */
         -webkit-text-fill-color: #32cd32 !important; /* Đảm bảo hiển thị trên mọi trình duyệt */
     }
-    /* 1. Đổi màu khung Card chính sang xanh lá nhạt */
+    /* 1.Màu khung Card chính
     .main-card {
         background-color: rgba(0, 255, 0, 0.05); /* Nền xanh cực nhạt */
         padding: 25px;
@@ -32,13 +32,13 @@ st.markdown(
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
 
-    /* 3. Đổi màu các ô nhập liệu (Input) sang viền xanh */
+    /* 3. Đổi màu các ô nhập liệu */
     .stTextInput div[data-baseweb="input"] {
         border: 1px solid #00ff00 !important;
         background-color: rgba(0, 255, 0, 0.02) !important;
     }
 
-    /* 4. Đổi màu nút bấm (Button) sang xanh lá */
+    /* 4. Đổi màu Button */
     .stButton>button {
         background-color: #00ff00 !important;
         color: black !important;
@@ -430,6 +430,7 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+
 
 
 

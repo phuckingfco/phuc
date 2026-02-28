@@ -1,31 +1,79 @@
 import streamlit as st
 
-#  Đổi tên trên tab trình duyệt và icon
+# 1. CẤU HÌNH TRANG 
 st.set_page_config(
-    page_title="Ứng dụng của Hoàng Phúc", 
+    page_title="PhucKing® - Bộ Chuyển Đổi Số", 
     page_icon="🔢",
-    layout="centered"
+    initial_sidebar_state="expanded" # Tự động nhảy vào Sidebar
 )
-
-#  Xóa menu "Made with Streamlit" 
-st.markdown("""
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    </style>
-    """, unsafe_allow_html=True)
-
+# 2. CSS TỔNG HỢP 
 st.markdown(
     """
     <style>
-    /* Ép nền tối toàn trang */
-    .stApp {
-        background-color: #0E1117;
+    /* 1. HIỆN Header để giữ Menu 3 gạch nhưng làm Header trong suốt */
+    header {
+        visibility: visible !important;
+        background-color: rgba(0,0,0,0) !important;
     }
-    /* Chỉnh ô nhập liệu sang màu xám nhẹ */
-    .stTextInput > div > div > input {
-        background-color: #262730 !important;
+
+    /* 2. ẨN TRIỆT ĐỂ dòng "Fork me on GitHub" và nút Deploy */
+    .viewerBadge_container__1QSob, 
+    .stDeployButton, 
+    [data-testid="stActionButtonIcon"] {
+        display: none !important;
+    }
+
+    /* 3. HIỆN Menu 3 gạch và ẩn các mục thừa bên trong */
+    #MainMenu {visibility: visible !important;}
+    
+    /* 4. ẨN Footer "Made with Streamlit" */
+    footer {visibility: hidden;
+    }
+    /* Hiện lại Header để hiện tiêu đề khi gửi link */
+    header {visibility: visible !important;}
+    
+    /* Chỉ ẩn Footer và Menu Streamlit để web chuyên nghiệp hơn */
+    footer {visibility: hidden;}
+    #MainMenu {visibility: hidden;}
+    .viewerBadge_container__1QSob {display: none !important;}
+
+    /* Nền App tối và hình nền chuyên nghiệp */
+    .stApp {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                    url("https://img.freepik.com/free-vector/abstract-binary-code-techno-background_1048-12836.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    /* Nền App tối và hình nền chuyên nghiệp */
+    .stApp {
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                    url("https://img.freepik.com/free-vector/abstract-binary-code-techno-background_1048-12836.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+    }
+     /* 2. Sửa lỗi Sidebar bị trắng: Ép Sidebar luôn có màu tối */
+    [data-testid="stSidebar"] {
+        background-color: #111111 !important;
+    }
+
+    /* Khung nội dung chính */
+    .main .block-container {
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    }
+        /* Màu chữ và bóng đổ */
+    h1, h2, h3, p, span, label {
+        color: #FFFFFF !important;
+        text-shadow: 1px 1px 3px black;
+    }
+
+    /* Tùy chỉnh ô nhập liệu */
+    .stTextInput input {
+        background-color: rgba(255, 255, 255, 0.1) !important;
         color: white !important;
         border: 1px solid #4CAF50 !important;
     }
@@ -34,102 +82,53 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown(
-    """
-    <style>
-    /* 1. Ép toàn bộ nền App và Sidebar luôn theo phong cách Dark Mode */
-    .stApp {
-        background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-                    url("https://raw.githubusercontent.com/phuckingfco/binary-converter/main/z7232853078743_5002e1f2937a75093669037c322e7c09.jpg");
-        background-size: cover;
-        background-attachment: fixed;
-    }
-
-    /* 2. Sửa lỗi Sidebar bị trắng: Ép Sidebar luôn có màu tối */
-    [data-testid="stSidebar"] {
-        background-color: #111111 !important;
-    }
+# --- HỆ THỐNG ỦNG HỘ PHUCKING® PREMIUM ---
+with st.sidebar:
+    st.divider()
+    st.markdown("### ☕ Ủng hộ dự án")
     
-    /* 3. Ép tất cả chữ trong Sidebar phải là màu trắng để nổi bật */
-    [data-testid="stSidebar"] .main .block-container, 
-    [data-testid="stSidebar"] span, 
-    [data-testid="stSidebar"] p, 
-    [data-testid="stSidebar"] h1, 
-    [data-testid="stSidebar"] h2, 
-    [data-testid="stSidebar"] h3 {
-        color: white !important;
-    }
+    # Mức tiền gợi ý
+    muc_donate = st.radio(
+        "Chọn mức bạn muốn mời Phúc:",
+        ["5.000 VNĐ", "10.000 VNĐ", "20.000 VNĐ", "Tùy tâm"],
+        index=1
+    )
 
-    /* 4. Giữ khung nội dung chính luôn dễ đọc */
-    .main .block-container {
-        background-color: rgba(255, 255, 255, 0.1); 
-        backdrop-filter: blur(10px);
-        padding: 40px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
+    if st.button("Hiện mã QR Donate"):
+        if muc_donate == "Tùy tâm":
+            st.toast("Mọi sự ủng hộ từ bạn đều là động lực lớn cho Phúc! ❤️")
+            loi_nhan = "Để xem tâm bạn như nào nha^^❤️!"
+        else:
+            st.toast(f"Cảm ơn bạn đã chọn mức {muc_donate}! 💖")
+            loi_nhan = f"Vui lòng nhập đúng {muc_donate} khi quét mã ZaloPay/Ngân hàng"
+        
+        # Hiển thị ảnh QR
+        st.image(
+            "https://raw.githubusercontent.com/phuckingfco/bo-chuyen-doi-so_phucking-official/main/VCPank.jpg",
+            caption=loi_nhan,
+            use_container_width=True
+        )
+        
+        st.info(f"Nội dung chuyển khoản: **PhucKing {muc_donate}**")
 
-    /* 5. Đảm bảo chữ ở nội dung chính luôn trắng và có bóng đổ */
-    h1, h2, h3, p, span, label {
-        color: #FFFFFF !important;
-        text-shadow: 2px 2px 4px #000000;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
-# 1. Cấu hình trang
-st.set_page_config(page_title="Bộ Chuyển Đổi Số - Hoàng Phúc", page_icon="🔢")
-
-# 2. Cấu hình giao diện (Làm tối nền)
-st.markdown(
-    """
-    <style>
-    .stApp {
-        /* Phủ một lớp gradient đen mờ lên trên ảnh nền */
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                    url("https://img.freepik.com/free-vector/abstract-binary-code-techno-background_1048-12836.jpg");
-        background-size: cover;
-        background-attachment: fixed;
-    }
-    
-    /* Làm cho khung nội dung chính hơi tối nhẹ nhưng vẫn đủ tương phản với chữ trắng */
-    .main .block-container {
-        background-color: rgba(0, 0, 0, 0.5); /* Nền khung màu đen mờ 50% */
-        padding: 40px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1); /* Viền mờ cho khung thêm sang */
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-        margin-top: 30px;
-    }
-
-    /* Đổi toàn bộ chữ sang màu trắng hoặc màu sáng để nổi bật trên nền tối */
-    h1, h2, h3, p, span, label {
-        color: #FFFFFF !important;
-        text-shadow: 1px 1px 2px black; /* Thêm bóng cho chữ để dễ đọc hơn nữa */
-    }
-
-    /* Tùy chỉnh các ô nhập liệu cho hợp với tông tối */
-    .stTextInput input {
-        background-color: rgba(255, 255, 255, 0.1) !important;
-        color: white !important;
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# 3. Tiêu đề chính
+# 3. TIÊU ĐỀ & SIDEBAR 
 st.title("🔢 Ứng dụng Chuyển đổi Hệ số")
-st.sidebar.title("🚀 Chủ sở hữu")
-st.sidebar.write("Tác giả: **Hoàng Phúc**")
-st.sidebar.caption("Phiên bản chuyên nghiệp 2026")
+st.sidebar.title("👑 Thương Hiệu")
+st.sidebar.subheader("PhucKing® System")
+st.sidebar.write("Chủ sở hữu: **Hoàng Phúc**")
+st.sidebar.info("Phiên bản độc quyền 2026")
 
-
-# 4. Chia các Tab chức năng
-tab1, tab2, tab3 = st.tabs(["➡️ Sang Nhị Phân", "⬅️ Sang Thập Phân", "🔠 Sang Chữ Cái"])
+# 4. CHIA CÁC TAB
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+    "🔢 Chuyển đổi", 
+    "📄 Văn bản", 
+    "💡 Giải mã", 
+    "➕ Cộng", 
+    "➖ Trừ",
+    "✖️ Nhân",
+    "➕ Chia"
+])
 
 with tab1:
         st.header("Đổi Số/Chữ sang Nhị Phân")
@@ -276,18 +275,100 @@ with tab3:
             except Exception:
                 st.error("⚠️ Lỗi: Dãy nhị phân không đúng định dạng hoặc chứa ký tự lạ!")
 
+# --- TAB 4: CỘNG ---
+with tab4:
+    st.markdown('<div class="main-card">', unsafe_allow_html=True)
+    st.header("➕ Cộng hai số Nhị phân")
+    col1, col2 = st.columns(2)
+    with col1:
+        bin1 = st.text_input("Nhập số nhị phân thứ nhất:", value="1010", key="add1")
+    with col2:
+        bin2 = st.text_input("Nhập số nhị phân thứ hai:", value="1100", key="add2")
+    
+    if st.button("Tính tổng", use_container_width=True):
+        try:
+            sum_dec = int(bin1, 2) + int(bin2, 2)
+            sum_bin = bin(sum_dec)[2:]
+            st.success(f"✅ Kết quả nhị phân: **{sum_bin}**")
+            st.info(f"🔢 Giá trị thập phân: {sum_dec}")
+        except ValueError:
+            st.error("❌ Vui lòng chỉ nhập số 0 và 1!")
+    st.markdown('</div>', unsafe_allow_html=True)
 
-# 5. Chân trang
+# --- TAB 5: TRỪ ---
+with tab5:
+    st.markdown('<div class="main-card">', unsafe_allow_html=True)
+    st.header("➖ Trừ hai số Nhị phân")
+    col1, col2 = st.columns(2)
+    with col1:
+        bin_sub1 = st.text_input("Nhập số bị trừ:", value="1111", key="sub1")
+    with col2:
+        bin_sub2 = st.text_input("Nhập số trừ:", value="1010", key="sub2")
+    
+    if st.button("Tính hiệu", use_container_width=True):
+        try:
+            val1, val2 = int(bin_sub1, 2), int(bin_sub2, 2)
+            sub_dec = val1 - val2
+            sub_bin = bin(sub_dec)[2:] if sub_dec >= 0 else "-" + bin(abs(sub_dec))[2:]
+            st.success(f"✅ Kết quả nhị phân: **{sub_bin}**")
+            st.info(f"🔢 Giá trị thập phân: {sub_dec}")
+        except ValueError:
+            st.error("❌ Vui lòng chỉ nhập số 0 và 1!")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# --- TAB 6: NHÂN ---
+with tab6:
+    st.markdown('<div class="main-card">', unsafe_allow_html=True)
+    st.header("✖️ Nhân hai số Nhị phân")
+    c1, c2 = st.columns(2)
+    with c1:
+        mul1 = st.text_input("Số thứ nhất:", value="101", key="mul1")
+    with c2:
+        mul2 = st.text_input("Số thứ hai:", value="11", key="mul2")
+    
+    if st.button("Tính tích", use_container_width=True):
+        try:
+            res_dec = int(mul1, 2) * int(mul2, 2)
+            st.success(f"✅ Kết quả nhị phân: **{bin(res_dec)[2:]}**")
+            st.info(f"🔢 Giá trị thập phân: {res_dec:,}")
+        except ValueError:
+            st.error("❌ Lỗi: Chỉ được nhập 0 và 1!")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# --- TAB 7: CHIA ---
+with tab7:
+    st.markdown('<div class="main-card">', unsafe_allow_html=True)
+    st.header("➕ Chia hai số Nhị phân")
+    d1, d2 = st.columns(2)
+    with d1:
+        div1 = st.text_input("Số bị chia:", value="1100", key="div1")
+    with d2:
+        div2 = st.text_input("Số chia:", value="10", key="div2")
+    
+    if st.button("Tính thương", use_container_width=True):
+        try:
+            v1, v2 = int(div1, 2), int(div2, 2)
+            if v2 == 0: st.error("❌ Không thể chia cho số 0!")
+            else:
+                st.success(f"✅ Thương (nhị phân): **{bin(v1//v2)[2:]}**")
+                if v1%v2 > 0: st.warning(f"🔸 Số dư (nhị phân): {bin(v1%v2)[2:]}")
+        except ValueError:
+            st.error("❌ Lỗi: Chỉ được nhập 0 và 1!")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+
+# 5. CHÂN TRANG ĐỘC QUYỀN
 st.markdown("---")
 st.markdown(
     """
-    <div style='text-align: center;'>
-        <p style='color: #FF4B4B; font-weight: bold; font-size: 20px;'>
-            🚀 Thiết kế bởi Hoàng Phúc 🚀
+    <div style='text-align: center; padding: 20px;'>
+        <h3 style='color: #FFD700; text-shadow: 2px 2px 10px #FFD700;'>
+            👑 PhucKing® Premium System 👑
+        </h3>
+        <p style='color: #4CAF50; font-weight: bold; letter-spacing: 2px;'>
+            ALL RIGHTS RESERVED © 2026
         </p>
-        <p style='color: gray;'>Bản quyền thuộc về PhucKing © 2026</p>
     </div>
     """, 
     unsafe_allow_html=True
 )
-

@@ -10,6 +10,12 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    /* 1. Đổi màu chữ bạn NHẬP VÀO ô */
+    .stTextInput input {
+        color: #00ff00 !important; /* Màu xanh lá cây rực rỡ */
+        font-weight: bold !important; /* Làm chữ đậm lên cho dễ nhìn */
+        -webkit-text-fill-color: #00ff00 !important; /* Đảm bảo hiển thị trên mọi trình duyệt */
+    }
     /* 1. Đổi màu khung Card chính sang xanh lá nhạt */
     .main-card {
         background-color: rgba(0, 255, 0, 0.05); /* Nền xanh cực nhạt */
@@ -424,6 +430,7 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+
 
 
 

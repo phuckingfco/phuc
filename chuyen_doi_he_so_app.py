@@ -147,44 +147,44 @@ with tab1:
                         </div>
                     """, unsafe_allow_html=True)
                 
-                else:
-                    # --- TRƯỜNG HỢP NHẬP CHỮ (XỬ LÝ DỮ LIỆU TRƯỚC) ---
-                    # Bước 1: Tạo danh sách nhị phân 
-                    danh_sach_nhi_phan = []
-                    for ky_tu in du_lieu:
-                        ma_np = format(ord(ky_tu), '08b')
-                        danh_sach_nhi_phan.append(ma_np)
+            else:
+                # --- TRƯỜNG HỢP NHẬP CHỮ (XỬ LÝ DỮ LIỆU TRƯỚC) ---
+                # Bước 1: Tạo danh sách nhị phân 
+                danh_sach_nhi_phan = []
+                for ky_tu in du_lieu:
+                    ma_np = format(ord(ky_tu), '08b')
+                    danh_sach_nhi_phan.append(ma_np)
                    
-                    # --- 1. CÀI ĐẶT GIAO DIỆN (Chỉnh ở đây để máy tự nhớ, không hiện chữ thừa) ---
-                    DO_CAO = "0px"          # 0px là mỏng nhất, 2px là mỏng vừa
-                    MAU_CHU = "white"       # Ép chữ mã nhị phân luôn màu trắng
-                    KHOANG_CACH_KHUNG = "2px" # Khoảng cách giữa các dòng ký tự
+                # --- 1. CÀI ĐẶT GIAO DIỆN (Chỉnh ở đây để máy tự nhớ, không hiện chữ thừa) ---
+                DO_CAO = "0px"          # 0px là mỏng nhất, 2px là mỏng vừa
+                MAU_CHU = "white"       # Ép chữ mã nhị phân luôn màu trắng
+                KHOANG_CACH_KHUNG = "2px" # Khoảng cách giữa các dòng ký tự
                     
-                    # --- 2. HIỂN THỊ TỪNG KÝ TỰ ---
-                    st.info(f"Mã nhị phân từng ký tự của '{du_lieu}':")
-                    for ky_tu, ma_np in zip(du_lieu, danh_sach_nhi_phan):
-                        st.markdown(f"""
-                            <div style="
-                                background-color: #2b2b2b; 
-                                padding: {DO_CAO} 12px; 
-                                border-radius: 6px; 
-                                border: 1px solid #444; 
-                                margin-bottom: {KHOANG_CACH_KHUNG}; 
-                                width: fit-content;
-                                display: flex;
-                                align-items: center;
-                                gap: 10px;">
-                                <span style="color: #4CAF50; font-weight: bold; font-size: 14px;">{ky_tu} :</span> 
-                                <code style="
-                                    color: {MAU_CHU} !important; 
-                                    background: transparent; 
-                                    border: none;
-                                    font-size: 14px;
-                                    font-family: monospace;">
-                                    {ma_np}
-                                </code>
-                            </div>
-                        """, unsafe_allow_html=True)
+                # --- 2. HIỂN THỊ TỪNG KÝ TỰ ---
+                st.info(f"Mã nhị phân từng ký tự của '{du_lieu}':")
+                for ky_tu, ma_np in zip(du_lieu, danh_sach_nhi_phan):
+                    st.markdown(f"""
+                        <div style="
+                            background-color: #2b2b2b; 
+                            padding: {DO_CAO} 12px; 
+                            border-radius: 6px; 
+                            border: 1px solid #444; 
+                            margin-bottom: {KHOANG_CACH_KHUNG}; 
+                            width: fit-content;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;">
+                            <span style="color: #4CAF50; font-weight: bold; font-size: 14px;">{ky_tu} :</span> 
+                            <code style="
+                                color: {MAU_CHU} !important; 
+                                background: transparent; 
+                                border: none;
+                                font-size: 14px;
+                                font-family: monospace;">
+                                {ma_np}
+                            </code>
+                        </div>
+                    """, unsafe_allow_html=True)
 
                     # --- 3. HIỂN THỊ NGUYÊN CÂU 
                     st.markdown("---")
@@ -371,4 +371,5 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+
 

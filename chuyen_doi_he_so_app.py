@@ -154,7 +154,6 @@ with tab1:
                     for ky_tu in du_lieu:
                         ma_np = format(ord(ky_tu), '08b')
                         danh_sach_nhi_phan.append(ma_np)
-
                    
                     # --- 1. CÀI ĐẶT GIAO DIỆN (Chỉnh ở đây để máy tự nhớ, không hiện chữ thừa) ---
                     DO_CAO = "0px"          # 0px là mỏng nhất, 2px là mỏng vừa
@@ -372,3 +371,4 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+

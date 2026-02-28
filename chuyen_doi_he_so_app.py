@@ -282,9 +282,9 @@ with tab4:
     st.header("➕ Cộng hai số Nhị phân")
     col1, col2 = st.columns(2)
     with col1:
-        bin1 = st.text_input("Nhập số nhị phân thứ nhất:", value="1010", key="add1")
+        bin1 = st.text_input("Nhập số nhị phân thứ nhất:", value="1010", key="input4")
     with col2:
-        bin2 = st.text_input("Nhập số nhị phân thứ hai:", value="1100", key="add2")
+        bin2 = st.text_input("Nhập số nhị phân thứ hai:", value="1100", key="input4")
     
     if st.button("Tính tổng", use_container_width=True):
         try:
@@ -373,6 +373,7 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+
 
 
 

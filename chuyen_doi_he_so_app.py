@@ -10,6 +10,47 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    /* 1. Đổi màu khung Card chính sang xanh lá nhạt */
+    .main-card {
+        background-color: rgba(0, 255, 0, 0.05); /* Nền xanh cực nhạt */
+        padding: 25px;
+        border-radius: 15px;
+        border: 2px solid #00ff00; /* Viền xanh lá đậm */
+        box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2);
+        margin-bottom: 20px;
+    }
+
+    /* 2. Đổi màu tiêu đề H2 trong các Tab */
+    h2 {
+        color: #00ff00 !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    /* 3. Đổi màu các ô nhập liệu (Input) sang viền xanh */
+    .stTextInput div[data-baseweb="input"] {
+        border: 1px solid #00ff00 !important;
+        background-color: rgba(0, 255, 0, 0.02) !important;
+    }
+
+    /* 4. Đổi màu nút bấm (Button) sang xanh lá */
+    .stButton>button {
+        background-color: #00ff00 !important;
+        color: black !important;
+        font-weight: bold !important;
+        border-radius: 10px !important;
+        border: none !important;
+        transition: 0.3s;
+    }
+    
+    .stButton>button:hover {
+        background-color: #00cc00 !important; /* Xanh đậm hơn khi di chuột */
+        box-shadow: 0 0 10px #00ff00;
+    }
+
+    /* 5. Ẩn các thành phần thừa GitHub */
+    .viewerBadge_container__1QSob, .stDeployButton {
+        display: none !important;
+    }
     /* 1. HIỆN Header để giữ Menu 3 gạch nhưng làm Header trong suốt */
     header {
         visibility: visible !important;
@@ -383,6 +424,7 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
+
 
 
 
